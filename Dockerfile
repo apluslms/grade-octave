@@ -5,6 +5,9 @@ FROM apluslms/grading-base:2.7
 RUN apt_install \
   gnuplot \
   ghostscript \
+  epstool \
+  fig2dev \
+  pstoedit \
   octave \
   octave-statistics \
   octave-image
