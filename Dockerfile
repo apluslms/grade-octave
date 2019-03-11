@@ -3,12 +3,11 @@ FROM apluslms/grading-base:2.8
 ARG OCTAVE_VER=5.1.0
 ARG OCTAVE_URL=https://ftp.acc.umu.se/mirror/gnu.org/gnu/octave/octave-$OCTAVE_VER.tar.gz
 
+ARG BUILD_DEPS='gcc g++ gfortran make'
+
 # Compile Octave from source code without GUI components.
 RUN apt_install \
-    gcc \
-    g++ \
-    gfortran \
-    make \
+    $BUILD_DEPS \
     libblas-dev \
    	liblapack-dev \
     libpcre3-dev \
@@ -16,7 +15,8 @@ RUN apt_install \
     libcurl4-gnutls-dev \
     libfftw3-dev \
     libglpk-dev \
-    gnuplot \
+    # gnuplot without X11 or Qt dependencies
+    gnuplot-nox \
     libgraphicsmagick++1-dev \
     libhdf5-dev \
     llvm-dev \
@@ -26,7 +26,6 @@ RUN apt_install \
     zlib1g-dev \
     epstool \
     fig2dev \
-    pstoedit \
   && cd /usr/local/src \
   && (curl -Ls $OCTAVE_URL | tar -xz) \
   && cd /usr/local/src/octave-$OCTAVE_VER \
@@ -48,10 +47,8 @@ RUN apt_install \
   && make install \
   && make distclean \
   # install Octave packages io, statistics and image (downloaded from the Forge repository)
-  && octave-cli --eval 'pkg install -forge io statistics image'
-
-# TODO: GraphicsMagick and SUNDIALS installations were not yet successful
-#configure: WARNING: GraphicsMagick++ library not found.  The imread, imwrite, and imfinfo functions for reading and writing image files will not be fully functional.
-#configure: WARNING: SUNDIALS NVECTOR serial library not found.  Solvers ode15i and ode15s will be disabled.
-#configure: WARNING: SUNDIALS IDA library not found.  Solvers ode15i and ode15s will be disabled.
-
+  && octave-cli --eval 'pkg install -forge io statistics image' \
+  # uninstall development libraries
+  && apt-get remove lib*-dev zlib*-dev $BUILD_DEPS \
+  # remove the Octave source code
+  && rm -rf /usr/local/src/octave-$OCTAVE_VER
