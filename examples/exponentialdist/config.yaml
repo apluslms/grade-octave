@@ -1,0 +1,20 @@
+---
+title: >-
+  Exponential distribution: probability density function and
+  the cumulative distribution function
+description: plot graphs with a parameter defined by the user
+instructions: |
+  Give a valid value for the lambda parameter of the exponential distribution.
+max_points: 1
+
+view_type: access.types.stdasync.acceptPost
+fields:
+  - name: exponentlambda
+    title: Lambda
+    required: True
+
+container:
+  image: apluslms/grade-octave:latest
+  mount: exponentialdist
+  cmd: /exercise/run_octave.sh exponentlambda
+# run_octave.sh parameters: the name of the input field
