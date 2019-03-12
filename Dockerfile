@@ -9,7 +9,7 @@ ARG BUILD_DEPS='gcc g++ gfortran make'
 RUN apt_install \
     $BUILD_DEPS \
     libblas-dev \
-   	liblapack-dev \
+    liblapack-dev \
     libpcre3-dev \
     libarpack2-dev \
     libcurl4-gnutls-dev \
