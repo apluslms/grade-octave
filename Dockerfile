@@ -1,10 +1,10 @@
-FROM apluslms/grading-base:2.7
+FROM apluslms/grading-base:2.8
 
-# TODO: avoid installing graphical user interface components.
-# Creating images, such as PNGs, is required.
+# Install Octave from the package repository.
+# There is no command-line only package, so this will also install
+# unnecessary graphical user interface components.
 RUN apt_install \
   gnuplot \
-  ghostscript \
   epstool \
   fig2dev \
   pstoedit \
