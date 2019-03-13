@@ -1,0 +1,3 @@
+# exclude everything from the build context except the bin directory
+*
+!bin

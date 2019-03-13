@@ -10,4 +10,8 @@ RUN apt_install \
   pstoedit \
   octave \
   octave-statistics \
-  octave-image
+  octave-image \
+  # Remove the octave binary because it will be replaced by a custom script.
+  && rm /usr/bin/octave
+
+COPY bin /usr/local/bin

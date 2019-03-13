@@ -1,0 +1,37 @@
+---
+name: Grade Octave examples
+description: Examples of using the grade-octave container
+
+lang: en
+
+# The public course files to serve as /static/course_key/
+static_dir: static
+
+# Course schedule and content.
+start: 2019-01-01
+end: 2055-01-01
+
+modules:
+  - key: example1
+    name: Sample exercises
+    type: def
+    children:
+      - key: drawexpdist
+        config: exponentialdist/config.yaml
+        type: normal
+
+module_types:
+  def:
+    open: 2019-01-01 12:00
+    duration: 20y
+    points_to_pass: 0
+exercise_types:
+  normal:
+    category: exercises
+    max_submissions: 0
+    max_points: 10
+    points_to_pass: 0
+categories:
+  exercises:
+    name: Exercises
+    points_to_pass: 0

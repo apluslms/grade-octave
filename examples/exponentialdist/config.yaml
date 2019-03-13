@@ -16,5 +16,5 @@ fields:
 container:
   image: apluslms/grade-octave:latest
   mount: exponentialdist
-  cmd: /exercise/run_octave.sh exponentlambda
-# run_octave.sh parameters: the name of the input field
+  cmd: /exercise/run_octave_plot.sh /exercise/draw.m exponentlambda
+# run_octave.sh parameters: the Octave script and the name of the input field
