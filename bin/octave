@@ -3,4 +3,4 @@
 # Run Octave without the graphical user interface.
 # The arguments to this script should include the path to
 # the Octave script to run and potentially its command-line arguments.
-/usr/bin/octave-cli --no-window-system --no-gui --quiet "$@"
+exec /usr/bin/octave-cli --no-window-system --no-gui --quiet "$@"
