@@ -39,7 +39,7 @@ capture -o /feedback/out -e /feedback/grading-script-errors octave "$octavescrip
 exitval=$?
 if [ "$exitval" -ne 0 ]; then
     read errormsg < /feedback/out
-    echo "<div id=\"feedback\"><div class=\"alert alert-danger\">$errormsg</div></div>" > /feedback/out
+    echo "<div class=\"alert alert-danger\">$errormsg</div>" > /feedback/out
     grade 0/1
     exit 0
 fi

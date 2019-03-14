@@ -2,4 +2,4 @@
 
 # This script prints feedback HTML that contains a Base64 encoded image.
 # The path to the PNG image file must be given as the first argument to this script.
-echo '<div id="feedback"><img src="data:image/png;base64, '$(base64 "$1")'"/></div>'
+echo '<img src="data:image/png;base64, '$(base64 "$1")'"/>'
