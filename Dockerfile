@@ -7,6 +7,9 @@ RUN apt_install \
   gnuplot \
   epstool \
   fig2dev \
+  fonts-freefont-otf \
+  libfontconfig1 \
+  libfreetype6 \
   pstoedit \
   octave \
   octave-statistics \
