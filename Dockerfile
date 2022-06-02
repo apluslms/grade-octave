@@ -1,4 +1,4 @@
-FROM apluslms/grading-base:2.8
+FROM apluslms/grading-base:4.4
 
 # Install Octave from the package repository.
 # There is no command-line only package, so this will also install
